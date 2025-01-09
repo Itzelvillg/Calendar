@@ -1,38 +1,40 @@
 import { Navbar } from "../components/Navbar"
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
-import format from 'date-fns/format'
-import parse from 'date-fns/parse'
-import startOfWeek from 'date-fns/startOfWeek'
-import getDay from 'date-fns/getDay'
-import enUS from 'date-fns/locale/en-US'
-import { addHours } from "date-fns"
-import 'react-big-calendar/lib/css/react-big-calendar.css'
+import { Calendar,  } from 'react-big-calendar'
+
+import { addHours} from "date-fns"
+import { localizer } from "../../helpers/calendarLocalizer"
+import { CalendarEvent } from "../components/CalendarEvent"
 
 
-const locales = {
-  'en-US': enUS,
-}
-
-const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek,
-  getDay,
-  locales,
-
-})
 
 const events = [
   {title: "gingi caca",
     notes: "Saquenla", 
     start: new Date() ,
-    end: addHours(new Date, 3)
+    end: addHours(new Date, 3),
+    bgColor:'#fafafa',
+    user:{
+      id:'123',
+      name:'jejo'
+    }
   },
 
 ]
 
 
 export const CalendarPage = () => {
+
+  const eventStyleGetter = (event, start, end, isSelected)=>{
+    console.log({event, start, end, isSelected})
+    const style={
+      backgroundColor: '#387CF7',
+      borderRadius: '0px',
+      opacity: 0.8,
+      color: 'white' 
+    }
+    return {style}
+  }
+
   return (
     <>
       <Navbar />
@@ -42,7 +44,9 @@ export const CalendarPage = () => {
       events={events}
       startAccessor="start"
       endAccessor="end"
-      style={{ height: 500 }}
+      style={{ height: 'calc(100vh - 80px)' }}
+      eventPropGetter={eventStyleGetter}
+        components={{events: CalendarEvent}}
     />
     </>
   )
