@@ -5,6 +5,7 @@ import { addHours} from "date-fns"
 import { localizer } from "../../helpers/calendarLocalizer"
 import { CalendarEvent } from "../components/CalendarEvent"
 import { useState } from "react"
+import { CalendarModal } from "../components/CalendarModal"
 
 
 
@@ -24,7 +25,7 @@ const events = [
 
 
 export const CalendarPage = () => {
-  const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'day' )
+  const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week' )
 
   const eventStyleGetter = (event, start, end, isSelected)=>{
   
@@ -66,6 +67,7 @@ export const CalendarPage = () => {
       onSelectEvent={onSelect}
       onView={onViewChanged}
     />
+    <CalendarModal/>
     </>
   )
 }
