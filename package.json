@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
     "calendar": "file:",
     "date-fns": "^4.1.0",
     "react": "^18.3.1",
@@ -17,7 +18,8 @@
     "react-datepicker": "^7.6.0",
     "react-dom": "^18.3.1",
     "react-modal": "^3.16.3",
-    "react-router": "^7.1.1"
+    "react-router": "^7.1.1",
+    "sweetalert2": "^11.15.10"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
