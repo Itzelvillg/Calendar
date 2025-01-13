@@ -1,4 +1,4 @@
-import { addHours } from "date-fns";
+import { addHours, differenceInSeconds } from "date-fns";
 import { useState } from "react";
 import ReactModal from "react-modal"
 import DatePicker from "react-datepicker";
@@ -37,7 +37,11 @@ export const CalendarModal = () => {
         setFormValues({...formValues, [changing]:event})
     }
 
-
+    const onSubmit = (event) =>{
+        event.preventDefault();
+        const difference = differenceInSeconds(formValues.end, formValues.end)
+        console.log(difference)
+    }
 
 
   return (
@@ -96,6 +100,7 @@ export const CalendarModal = () => {
         <button
             type="submit"
             className="btn btn-outline-primary btn-block"
+             onClick={onSubmit}
         >
             <i className="far fa-save"></i>
             <span> Guardar</span>
