@@ -40,7 +40,7 @@ export const CalendarModal = () => {
     const onSubmit = (event) =>{
         event.preventDefault();
         const difference = differenceInSeconds(formValues.end, formValues.end)
-        if(isNaN(difference || difference <=0 )){
+        if(isNaN(difference ) || difference <=0){
             console.log('Error en las fechas')
             return;
         }
