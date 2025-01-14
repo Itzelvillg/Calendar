@@ -7,6 +7,7 @@ import { CalendarEvent } from "../components/CalendarEvent"
 import { useState } from "react"
 import { CalendarModal } from "../components/CalendarModal"
 import { useUiStore } from "../../hooks/useUiStore"
+import { useCalendarStore } from "../../hooks/useCalendarStore"
 
 
 
@@ -28,8 +29,11 @@ const events = [
 export const CalendarPage = () => {
   const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week' )
   const {openDateModal} = useUiStore();
-  const eventStyleGetter = (event, start, end, isSelected)=>{
+  const {events} = useCalendarStore();
+
   
+  const eventStyleGetter = (event, start, end, isSelected)=>{
+
     const style={
       backgroundColor: '#387CF7',
       borderRadius: '0px',
