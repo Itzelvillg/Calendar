@@ -6,6 +6,7 @@ import { localizer } from "../../helpers/calendarLocalizer"
 import { CalendarEvent } from "../components/CalendarEvent"
 import { useState } from "react"
 import { CalendarModal } from "../components/CalendarModal"
+import { useUiStore } from "../../hooks/useUiStore"
 
 
 
@@ -26,7 +27,7 @@ const events = [
 
 export const CalendarPage = () => {
   const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week' )
-
+  const {openDateModal} = useUiStore();
   const eventStyleGetter = (event, start, end, isSelected)=>{
   
     const style={
@@ -40,6 +41,7 @@ export const CalendarPage = () => {
 
   const onDoubleClick = (event)=>{
     console.log({DoubleClick: event})
+    openDateModal()
   }
 
   const onSelect = (event)=>{
