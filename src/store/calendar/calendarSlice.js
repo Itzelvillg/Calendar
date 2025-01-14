@@ -28,4 +28,4 @@ export const calendarSlice = createSlice({
   },
 })
 // Action creators are generated for each case reducer function
-export const { activeEvents, events } = calendarSlice.actions
+export const { activeEvent, events, onSetActiveEvent } = calendarSlice.actions
