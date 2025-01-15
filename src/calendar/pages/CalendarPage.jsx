@@ -8,6 +8,7 @@ import { useState } from "react"
 import { CalendarModal } from "../components/CalendarModal"
 import { useUiStore } from "../../hooks/useUiStore"
 import { useCalendarStore } from "../../hooks/useCalendarStore"
+import { FabAddNew } from "../components/FabAddNew"
 
 
 
@@ -36,7 +37,7 @@ export const CalendarPage = () => {
     openDateModal()
   }
 
-  const onSelect = (event)=>{
+  const onSelect = ({event})=>{
     setActiveEvent(event)
   }
   const onViewChanged= (event)=>{
@@ -62,6 +63,7 @@ export const CalendarPage = () => {
       onView={onViewChanged}
     />
     <CalendarModal/>
+    <FabAddNew/>
     </>
   )
 }
