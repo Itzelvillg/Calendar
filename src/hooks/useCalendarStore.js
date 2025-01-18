@@ -4,8 +4,9 @@ import { onSetActiveEvent } from "../store/calendar/calendarSlice";
 
 
 export const useCalendarStore = () => {
-  const {events,activeEvents} = useSelector(state => state.calendar)
   const dispatch = useDispatch();
+  const {events,activeEvent} = useSelector(state => state.calendar);
+  
 
   const setActiveEvent = (calendarEvent) => {
     dispatch(onSetActiveEvent(calendarEvent))
@@ -13,5 +14,5 @@ export const useCalendarStore = () => {
 
 
 
-  return {events, activeEvents, setActiveEvent}
+  return {events, activeEvent, setActiveEvent}
 }

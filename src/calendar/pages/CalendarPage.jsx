@@ -16,10 +16,10 @@ import { FabAddNew } from "../components/FabAddNew"
 
 
 export const CalendarPage = () => {
-  const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week' )
   const {openDateModal} = useUiStore();
   const {events, setActiveEvent} = useCalendarStore();
-
+  
+  const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week' )
 
   const eventStyleGetter = (event, start, end, isSelected)=>{
 
@@ -37,7 +37,8 @@ export const CalendarPage = () => {
     openDateModal()
   }
 
-  const onSelect = ({event})=>{
+  const onSelect = (event)=>{
+    console.log({click: event})
     setActiveEvent(event)
   }
   const onViewChanged= (event)=>{

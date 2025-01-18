@@ -27,7 +27,7 @@ export const CalendarModal = () => {
     const {isDateModalOpen,closeDateModal} = useUiStore();
     const {activeEvent} = useCalendarStore()
 
-    const [formValues, setFormValues] = useState( {title: 'Jejo', notes: 'cola', start: new Date(), end: addHours(new Date(), 2)})
+    const [formValues, setFormValues] = useState( {title: '', notes: '', start: new Date(), end: addHours(new Date(), 2)})
     const [formSubmited, setFormSubmited] = useState(false);
 
     const titleClass = useMemo(() => {
@@ -87,18 +87,18 @@ export const CalendarModal = () => {
         style={customStyles}
     >
 
-    <h1> Nuevo evento </h1>
+    <h1> Nuevo evento   a</h1>
     <hr />
     <form className="container">
 
         <div className="form-group mb-2 ">
             <label>Fecha y hora inicio</label>
-            <DatePicker selected={formValues.start} className={`form-control ${titleClass}`} onChange={(event) => onDateChanged(event, 'start')} dateFormat='Pp' showTimeSelect/>
+            <DatePicker selected={formValues.start} className={`form-control ${titleClass}`} onChange={(event) => onDateChanged(event, 'start')} dateFormat='Pp' showTimeSelect locale="es"/>
         </div>
 
         <div className="form-group mb-2">
             <label>Fecha y hora fin</label>
-            <DatePicker minDate={formValues.start} selected={formValues.end} className={`form-control ${titleClass}`} onChange={(event) => onDateChanged(event, 'end')}  dateFormat='Pp' showTimeSelect/>
+            <DatePicker minDate={formValues.start} selected={formValues.end} className={`form-control ${titleClass}`} onChange={(event) => onDateChanged(event, 'end')}  dateFormat='Pp' showTimeSelect locale="es"/>
         </div>
 
         <hr />
