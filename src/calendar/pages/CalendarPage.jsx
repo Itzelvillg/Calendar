@@ -1,7 +1,6 @@
 import { Navbar } from "../components/Navbar"
 import { Calendar,  } from 'react-big-calendar'
 
-import { addHours} from "date-fns"
 import { localizer } from "../../helpers/calendarLocalizer"
 import { CalendarEvent } from "../components/CalendarEvent"
 import { useState } from "react"

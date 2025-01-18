@@ -25,7 +25,7 @@ ReactModal.setAppElement('#root');
 
 export const CalendarModal = () => {
     const {isDateModalOpen,closeDateModal} = useUiStore();
-    const {activeEvent} = useCalendarStore()
+    const {activeEvent, startSavingEvent} = useCalendarStore()
 
     const [formValues, setFormValues] = useState( {title: '', notes: '', start: new Date(), end: addHours(new Date(), 2)})
     const [formSubmited, setFormSubmited] = useState(false);
@@ -57,11 +57,11 @@ export const CalendarModal = () => {
         setFormValues({...formValues, [changing]:event})
     }
 
-    const onSubmit = (event) =>{
+    const onSubmit =async (event) =>{
         event.preventDefault();
         setFormSubmited(true);
 
-        const difference = differenceInSeconds(formValues.end, formValues.end);
+        const difference = differenceInSeconds(formValues.end, formValues.start);
         
         if(isNaN(difference ) || difference <=0){
             Swal.fire('Fechas Incorrectas', 'Revisa la fecha', 'error')
@@ -72,7 +72,9 @@ export const CalendarModal = () => {
         if(formValues.title <= 0) return;
         console.log(formValues);
 
-        //TODO: close modal, remove errors on screen
+        await startSavingEvent(formValues)
+        closeDateModal();
+        setFormSubmited(false)
     }
 
 
@@ -93,12 +95,12 @@ export const CalendarModal = () => {
 
         <div className="form-group mb-2 ">
             <label>Fecha y hora inicio</label>
-            <DatePicker selected={formValues.start} className={`form-control ${titleClass}`} onChange={(event) => onDateChanged(event, 'start')} dateFormat='Pp' showTimeSelect locale="es"/>
+            <DatePicker selected={formValues.start} className={`form-control ${titleClass}`} onChange={(event) => onDateChanged(event, 'start')} dateFormat='Pp' showTimeSelect />
         </div>
 
         <div className="form-group mb-2">
             <label>Fecha y hora fin</label>
-            <DatePicker minDate={formValues.start} selected={formValues.end} className={`form-control ${titleClass}`} onChange={(event) => onDateChanged(event, 'end')}  dateFormat='Pp' showTimeSelect locale="es"/>
+            <DatePicker minDate={formValues.start} selected={formValues.end} className={`form-control ${titleClass}`} onChange={(event) => onDateChanged(event, 'end')}  dateFormat='Pp' showTimeSelect />
         </div>
 
         <hr />
