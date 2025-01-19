@@ -45,3 +45,10 @@
     font-size: 30px;
     position: fixed;
   }
+  .fab-danger{
+    border-radius: 100%;
+    bottom: 25px;
+    left: 25px;
+    font-size: 30px;
+    position: fixed;
+  }
