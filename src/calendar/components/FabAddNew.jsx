@@ -16,7 +16,7 @@ const handleClick = ()=>{
         bgColor:'#fafafa',
         user:{
           id:'123',
-          name:'jejo'
+          name:'jejo                 jj'
         }
 
   })
