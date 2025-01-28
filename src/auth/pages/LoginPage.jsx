@@ -16,7 +16,7 @@ const registerFormFields = {
 }
 
 export const LoginPage = () => {
-    const {startLogin} = useAuthStore()
+    const {startLogin, } = useAuthStore()
     const {loginEmail, loginPassword,onInputChange: onLoginChange}= useForm(loginFormFields)
     const {registerName, registerEmail, registerPassword,registerPassword2, onInputChange}= useForm(registerFormFields)
     
