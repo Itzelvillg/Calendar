@@ -20,8 +20,8 @@ export const useAuthStore = () =>{
 
       dispatch(onLogin({name: data.name, uid: data.uid}))
     } catch (error) {
-      dispatch(onLogout('The credentials are wrong'))
-
+      dispatch(onLogout('The credentials are wrong '))
+      
       setTimeout(() => {
         dispatch(clearErrorMessage())
       }, 10);
