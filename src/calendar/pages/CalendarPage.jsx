@@ -18,17 +18,17 @@ import { useAuthStore } from "../../hooks/useAuthStore"
 
 export const CalendarPage = () => {
   const {openDateModal} = useUiStore();
-  const {events,hasEventSelected ,setActiveEvent, startLoadingEvents} = useCalendarStore();
+  const {events,setActiveEvent, startLoadingEvents} = useCalendarStore();
   const {user} = useAuthStore()
   
   const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'week' )
 
   const eventStyleGetter = (event, start, end, isSelected)=>{
 
-    const isMyEvent = (user.uid === event.user._id)|| (user.uid === event.user.id);
+    const isMyEvent = (user.uid === event.user.uid)|| (user.uid === event.user._id);
     
     const style={
-      backgroundColor: isMyEvent ?'#387CF7' : '#465660',
+      backgroundColor: isMyEvent ? '#387CF7' : '#465660',
       borderRadius: '0px',
       opacity: 0.8,
       color: 'white' 
@@ -37,17 +37,18 @@ export const CalendarPage = () => {
   }
 
   const onDoubleClick = (event)=>{
-    console.log({DoubleClick: event})
+    
     openDateModal()
   }
 
   const onSelect = (event)=>{
-    console.log({click: event})
+    
     setActiveEvent(event)
   }
   const onViewChanged= (event)=>{
-    console.log( event)
+    
     localStorage.setItem('lastView', event)
+    setLastView( event )
   }
 
 
@@ -75,7 +76,7 @@ export const CalendarPage = () => {
     />
     <CalendarModal/>
     <FabAddNew/>
-    {hasEventSelected  ? <FabDelete/> : null}
+    <FabDelete/>
     </>
   )
 }
