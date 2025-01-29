@@ -58,6 +58,7 @@ export const useCalendarStore = () => {
     
     }
   }
+ 
 
   return {
     events,
@@ -66,6 +67,7 @@ export const useCalendarStore = () => {
     startSavingEvent,
     startDeletingEvent,
     hasEventSelected: !!activeEvent,
-    startLoadingEvents
+    startLoadingEvents,
+   
   };
 };
